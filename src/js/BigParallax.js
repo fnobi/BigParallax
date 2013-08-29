@@ -5,6 +5,9 @@ var BigParallax = function (opts) {
 
     this.initBoxes();
     this.initListeners();
+
+    this.updateScrollTop();
+    this.updateWindowHeight();
 };
 
 BigParallax.prototype.initBoxes = function () {
@@ -29,14 +32,28 @@ BigParallax.prototype.initListeners = function () {
     var rootElement = this.rootElement;
 
     document.addEventListener('scroll', function () {
-        self.updateScrollTop(rootElement.scrollTop);
+        self.updateScrollTop();
+    });
+
+    window.addEventListener('resize', function () {
+        self.updateWindowHeight();
     });
 };
 
-BigParallax.prototype.updateScrollTop = function (scrollTop) {
+BigParallax.prototype.updateScrollTop = function () {
+    var scrollTop = this.rootElement.scrollTop;
     var boxes = this.boxes;
 
     for (var i = 0; i < boxes.length; i++) {
         boxes[i].updateScrollTop(scrollTop);
+    }
+};
+
+BigParallax.prototype.updateWindowHeight = function () {
+    var windowHeight = window.innerHeight;
+    var boxes = this.boxes;
+
+    for (var i = 0; i < boxes.length; i++) {
+        boxes[i].updateWindowHeight(windowHeight);
     }
 };

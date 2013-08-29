@@ -2,8 +2,6 @@ var BigParallaxBox = function (opts) {
     this.el = opts.el || document.createElement('div');
     this.imageURL = opts.imageURL || '';
 
-    this.scrollTop = 0;
-
     this.initImage();
 };
 
@@ -28,6 +26,7 @@ BigParallaxBox.prototype.initBackground = function () {
 
     el.style.backgroundImage = ['url(', imageURL, ')'].join('');
     el.style.backgroundRepeat = 'no-repeat';
+    el.style.backgroundAttachment = 'fixed';
 
     this.updateBackground();
 };
@@ -43,6 +42,7 @@ BigParallaxBox.prototype.updateBackground = function () {
     var offsetHeight = el.offsetHeight;
     var offsetWidth = el.offsetWidth;
 
+    var windowHeight = this.windowHeight;
 
     // update background-size
     var scale;
@@ -56,12 +56,14 @@ BigParallaxBox.prototype.updateBackground = function () {
 
 
     // update background-position
-    var value = (scrollTop - offsetTop) / offsetHeight;
-    var heightRest = (imageHeight * scale) - offsetHeight;
+    var diff = scrollTop - offsetTop;
+    var value = diff / (offsetHeight + windowHeight);
+
+    var positionY = -(imageHeight * scale) * value - windowHeight / 2;
 
     el.style.backgroundPosition = [
         'center',
-        (heightRest * value) + 'px'
+        positionY + 'px'
     ].join(' ');
 };
 
@@ -70,7 +72,9 @@ BigParallaxBox.prototype.updateScrollTop = function (scrollTop) {
     this.updateBackground();
 };
 
-
+BigParallaxBox.prototype.updateWindowHeight = function (windowHeight) {
+    this.windowHeight = windowHeight;
+};
 
 
 
