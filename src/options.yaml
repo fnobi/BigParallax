@@ -1,0 +1,40 @@
+name: BigParallax
+
+url:
+  http://BigParallax.fnobi.com
+
+repository:
+  git://github.com/fnobi/BigParallax.git
+
+meta:
+  title:
+    BigParallax
+  description:
+    big size image parallax
+  keywords: []
+  favicon_url: /img/favicon.ico
+
+ios:
+  viewport: 
+    - width=device-width
+    - initial-scale=1.0
+    - maximum-scale=1.0
+    - user-scalable=0
+  icon_url: /img/apple-touch-icon.png
+
+sns:
+  twitter:
+    sharetext:
+      big size image parallax      
+    sharehashtag: []
+
+  facebook:
+    app_id: ''
+    sharetext:
+      big size image parallax
+
+ogp:
+  image: 
+    url: http://BigParallax.fnobi.com/img/ogp-icon.png
+    width: 300
+    height: 300
