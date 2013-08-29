@@ -1,6 +1,6 @@
 {
   "name": "BigParallax",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "main": "js/BigParallax.js",
   "dependencies": {
     "ejs-head-modules": "~0.1.0",
