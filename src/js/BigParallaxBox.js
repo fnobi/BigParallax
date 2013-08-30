@@ -74,6 +74,7 @@ BigParallaxBox.prototype.updateScrollTop = function (scrollTop) {
 
 BigParallaxBox.prototype.updateWindowHeight = function (windowHeight) {
     this.windowHeight = windowHeight;
+    this.updateBackground();
 };
 
 

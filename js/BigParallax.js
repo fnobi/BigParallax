@@ -74,6 +74,7 @@ BigParallaxBox.prototype.updateScrollTop = function (scrollTop) {
 
 BigParallaxBox.prototype.updateWindowHeight = function (windowHeight) {
     this.windowHeight = windowHeight;
+    this.updateBackground();
 };
 
 
@@ -114,11 +115,11 @@ BigParallax.prototype.initListeners = function () {
 
     document.addEventListener('scroll', function () {
         self.updateScrollTop();
-    });
+    }, false);
 
     window.addEventListener('resize', function () {
         self.updateWindowHeight();
-    });
+    }, false);
 };
 
 BigParallax.prototype.updateScrollTop = function () {
