@@ -1,43 +1,27 @@
 var BigParallax = function (opts) {
     opts = opts || {};
 
-    this.els = opts.els || [];
-    this.imageSet = opts.imageSet || [];
     this.rootElement = opts.rootElement || document.body;
+
+    this.boxes = [];
 };
 
 BigParallax.prototype.start = function () {
-    this.initBoxes();
     this.initListeners();
 
     this.updateScrollTop();
     this.updateWindowHeight();
 };
 
-BigParallax.prototype.addBox = function (el, imagePath) {
-    if (!el || !imagePath) {
+BigParallax.prototype.addBox = function (el, imageURL) {
+    if (!el || !imageURL) {
         return;
     }
 
-    this.els.push(el);
-    this.imageSet.push(imagePath);
-};
-
-BigParallax.prototype.initBoxes = function () {
-    var els = this.els;
-    var imageSet = this.imageSet;
-    var length = Math.min(els.length, imageSet.length);
-
-    var boxes = [];
-
-    for (var i = 0; i < length; i++) {
-        boxes.push(new BigParallaxBox({
-            el: els[i],
-            imageURL: imageSet[i]
-        }));
-    }
-
-    this.boxes = boxes;
+    this.boxes.push(new BigParallaxBox({
+        el: el,
+        imageURL: imageURL
+    }));
 };
 
 BigParallax.prototype.initListeners = function () {
