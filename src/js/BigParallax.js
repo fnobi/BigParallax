@@ -1,13 +1,26 @@
 var BigParallax = function (opts) {
+    opts = opts || {};
+
     this.els = opts.els || [];
     this.imageSet = opts.imageSet || [];
     this.rootElement = opts.rootElement || document.body;
+};
 
+BigParallax.prototype.start = function () {
     this.initBoxes();
     this.initListeners();
 
     this.updateScrollTop();
     this.updateWindowHeight();
+};
+
+BigParallax.prototype.addBox = function (el, imagePath) {
+    if (!el || !imagePath) {
+        return;
+    }
+
+    this.els.push(el);
+    this.imageSet.push(imagePath);
 };
 
 BigParallax.prototype.initBoxes = function () {

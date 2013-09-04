@@ -1,11 +1,12 @@
 window.addEventListener('DOMContentLoaded', function () {
-    new BigParallax({
-        els: document.getElementsByClassName('box'),
-        imageSet: [
-            '/img/sample-1.jpg',
-            '/img/sample-2.jpg',
-            '/img/sample-3.jpg',
-            '/img/sample-4.jpg'
-        ]
-    });
+    var els = document.getElementsByClassName('box');
+    var bigParallax = new BigParallax();
+
+    for (var i = 0; i < 4; i++) {
+        bigParallax.addBox(els[i], [
+            '/img/sample-', (i + 1), '.jpg'
+        ].join(''));
+    }
+
+    bigParallax.start();
 }, false);
