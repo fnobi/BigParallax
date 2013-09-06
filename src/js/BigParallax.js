@@ -28,13 +28,21 @@ BigParallax.prototype.initListeners = function () {
     var self = this;
     var rootElement = this.rootElement;
 
-    document.addEventListener('scroll', function () {
-        self.updateScrollTop();
-    }, false);
+    var elementOn = function (el, type, fn) {
+        if (el.addEventListener) {
+            el.addEventListener(type, fn, false);
+        } else if (el.attachEvent) {
+            el.attachEvent('on' + type, fn);
+        }
+    };
 
-    window.addEventListener('resize', function () {
+    elementOn(document, 'scroll', function () {
+        self.updateScrollTop();
+    });
+
+    elementOn(window, 'resize', function () {
         self.updateWindowHeight();
-    }, false);
+    });
 };
 
 BigParallax.prototype.updateScrollTop = function () {
