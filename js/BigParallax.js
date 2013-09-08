@@ -51,7 +51,7 @@ BigParallaxBox.prototype.updateBackground = function () {
         el.style.backgroundSize = offsetWidth + 'px';
     } else {
         scale = 1;
-        delete el.style.backgroundSize;
+        el.style.backgroundSize = 'auto';
     }
 
 
