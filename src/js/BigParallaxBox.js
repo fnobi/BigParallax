@@ -45,6 +45,11 @@ BigParallaxBox.prototype.updateBackground = function () {
     var scale;
 
 
+    if (!imageWidth || !imageHeight) {
+        return;
+    }
+
+
     // update background-size
     if (imageWidth < offsetWidth) {
         scale = offsetWidth / imageWidth;
