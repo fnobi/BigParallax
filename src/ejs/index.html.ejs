@@ -1,6 +1,6 @@
 <% function content (buf) { %>
 <section id="wrapper"><% for (var i = 0; i < 4; i++) { %>
-<section class="box">
+<section id="box-<%= i + 1%>" class="box">
 <% for (var j = 0; j < 30; j++) { %>
 <p>[<%= i + 1 %>-<%= j + 1 %>]これはサンプルです。</p><% } %>
 <!-- /.box --></section><% } %>
