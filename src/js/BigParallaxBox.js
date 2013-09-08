@@ -45,7 +45,7 @@ BigParallaxBox.prototype.updateBackground = function () {
     var scale;
 
 
-    if (!imageWidth || !imageHeight) {
+    if (!imageWidth || !imageHeight || !offsetHeight || !offsetWidth) {
         return;
     }
 

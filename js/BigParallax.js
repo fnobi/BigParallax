@@ -45,7 +45,7 @@ BigParallaxBox.prototype.updateBackground = function () {
     var scale;
 
 
-    if (!imageWidth || !imageHeight) {
+    if (!imageWidth || !imageHeight || !offsetHeight || !offsetWidth) {
         return;
     }
 
@@ -139,7 +139,9 @@ BigParallax.prototype.initListeners = function () {
 };
 
 BigParallax.prototype.updateScrollTop = function () {
-    var scrollTop = this.rootElement.scrollTop;
+    var scrollTop = (
+        document.documentElement.scrollTop || document.body.scrollTop
+    );
     var boxes = this.boxes;
 
     for (var i = 0; i < boxes.length; i++) {
