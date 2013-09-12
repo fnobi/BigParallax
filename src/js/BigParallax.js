@@ -47,7 +47,7 @@ BigParallax.prototype.initListeners = function () {
 
 BigParallax.prototype.updateScrollTop = function () {
     var scrollTop = (
-        document.documentElement.scrollTop || document.body.scrollTop || window.scrollTop
+        document.documentElement.scrollTop || document.body.scrollTop || window.scrollTop || 0
     );
     var boxes = this.boxes;
 

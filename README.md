@@ -19,13 +19,13 @@ git clone git://github.com/fnobi/BigParallax.git
 ```
 (function () {
     function init () {
-        var els = document.getElementsByClassName('box');
         var bigParallax = new BigParallax();
 
         for (var i = 0; i < 4; i++) {
-            bigParallax.addBox(els[i], [
-                '/img/sample-', (i + 1), '.jpg'
-            ].join(''));
+            bigParallax.addBox(
+                document.getElementById('box-' + (i + 1)), 
+                ['/img/sample-', (i + 1), '.jpg'].join('')
+            );
         }
 
         bigParallax.start();
