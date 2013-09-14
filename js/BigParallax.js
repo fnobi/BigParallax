@@ -129,13 +129,17 @@ BigParallax.prototype.initListeners = function () {
         }
     };
 
-    elementOn(document, 'scroll', function () {
+    function scrollListener () {
         self.updateScrollTop();
-    });
+    }
 
-    elementOn(window, 'resize', function () {
+    function resizeLiscrollListener () {
         self.updateWindowHeight();
-    });
+    }
+
+    elementOn(document, 'scroll', scrollListener);
+    elementOn(window, 'scroll', scrollListener);
+    elementOn(window, 'resize', resizeLiscrollListener);
 };
 
 BigParallax.prototype.updateScrollTop = function () {
@@ -150,7 +154,7 @@ BigParallax.prototype.updateScrollTop = function () {
 };
 
 BigParallax.prototype.updateWindowHeight = function () {
-    var windowHeight = window.innerHeight;
+    var windowHeight = window.innerHeight || document.body.clientHeight || 0;
     var boxes = this.boxes;
 
     for (var i = 0; i < boxes.length; i++) {
